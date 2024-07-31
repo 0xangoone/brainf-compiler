@@ -6,7 +6,7 @@ AssemblyGen::AssemblyGen(const std::string& input) {
     this->data = input;
 }
 std::string handle_string(std::string input){
-    std::string out = "\"";
+    std::string out ;
     for (int i =0;i<input.size();++i){
         switch (input[i]){
             case '\n':
@@ -64,8 +64,8 @@ std::string handle_string(std::string input){
     return out;
 }
 std::string AssemblyGen::gen_asm(){
-    std::string format = "format ELF64";
-    std::string section_data = "section \".data\"\nmsg: db \"";
+    std::string format = "format ELF64\n";
+    std::string section_data = "section \".data\"\nmsg: db ";
     section_data += handle_string(this->data);
     section_data += "\n";
     std::string section_code = "section \".text\" executable\npublic _start\n_start:\n";
