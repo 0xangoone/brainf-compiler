@@ -25,7 +25,7 @@ std::vector<Tokens> Lexer::make_tokens(){
     };
 
     while ( this->cur_pos < this->input.size() ){
-       if (lexe_arr.find(this->cur_char) != lexe_arr.end())  out.push_back(lexe_arr.at(this->cur_char));
+        if (lexe_arr.find(this->cur_char) != lexe_arr.end())  out.push_back(lexe_arr.at(this->cur_char));
         this->next();
     }
     return out;
