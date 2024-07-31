@@ -25,7 +25,7 @@ int main(int argc,char* argv[]){
     asm_file << assm;
     asm_file.close();
 
-    system("fasm main.asm");
+    system("fasm output.asm");
     system("rm output.asm");
 
 
