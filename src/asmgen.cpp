@@ -10,6 +10,10 @@ std::string handle_string(std::string input){
     for (int i =0;i<input.size();++i){
         switch (input[i]){
             case '\n':
+                if (input.size()==1){
+                    out += "10";
+                    break;
+                }
                 if (i == 0){
                     out += "10,\"";
                     break;
@@ -21,6 +25,10 @@ std::string handle_string(std::string input){
                 out += ",10,";
                 break;
             case '\t':
+                if (input.size()==1){
+                    out += "9";
+                    break;
+                }
                 if (i == 0){
                     out += "9,";
                     break;
@@ -32,6 +40,10 @@ std::string handle_string(std::string input){
                 out += ",9,";
                 break;
             case '\r':
+                if (input.size()==1){
+                    out += "13";
+                    break;
+                }
                 if (i == 0){
                     out += "13,";
                     break;
@@ -43,6 +55,12 @@ std::string handle_string(std::string input){
                 out += ",13,";
                 break;
             default:
+                if (input.size()==1){
+                    out += "'";
+                    out += input[i];
+                    out += "'";
+                    break;
+                }
                 if (i == 0){
                     out +="'";
                     out += input[i];
