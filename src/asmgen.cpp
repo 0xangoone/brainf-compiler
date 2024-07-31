@@ -10,7 +10,7 @@ std::string handle_string(std::string input){
     for (int i =0;i<input.size();++i){
         switch (input[i]){
             case '\n':
-                if (input.size()==1){
+                if (i == input.size()-1){
                     out += "10";
                     break;
                 }
@@ -18,14 +18,11 @@ std::string handle_string(std::string input){
                     out += "10,\"";
                     break;
                 }
-                if ( i == input.size()-1){
-                    out += ",10";
-                    break;
-                }
-                out += ",10,";
+                
+                out += "10,";
                 break;
             case '\t':
-                if (input.size()==1){
+                if (i == input.size()-1){
                     out += "9";
                     break;
                 }
@@ -33,14 +30,11 @@ std::string handle_string(std::string input){
                     out += "9,";
                     break;
                 }
-                if ( i == input.size()-1){
-                    out += ",9";
-                    break;
-                }
-                out += ",9,";
+                
+                out += "9,";
                 break;
             case '\r':
-                if (input.size()==1){
+                if (i==input.size()-1){
                     out += "13";
                     break;
                 }
@@ -48,14 +42,11 @@ std::string handle_string(std::string input){
                     out += "13,";
                     break;
                 }
-                if ( i == input.size()-1){
-                    out += ",13";
-                    break;
-                }
-                out += ",13,";
+                
+                out += "13,";
                 break;
             default:
-                if (input.size()==1){
+                if (i==input.size()-1){
                     out += "'";
                     out += input[i];
                     out += "'";
@@ -67,13 +58,8 @@ std::string handle_string(std::string input){
                     out +="',";
                     break;
                 }
-                if ( i == input.size()-1){
-                    out += ",'";
-                    out += input[i];
-                    out += "'";
-                    break;
-                }
-                out +=  ",'";
+                
+                out +=  "'";
                 out += input[i];
                 out += "',";
                 break;
@@ -96,4 +82,5 @@ std::string AssemblyGen::gen_asm(){
 
     std::string code = format + section_code + section_data;
     return code;
+    
 }
